@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Vos ✨</title>
+    <style>
+        /* CSS: Estética Soft & Romántica */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            --accent-pink: #ffb7b2;
+            --soft-purple: #b2a4d4;
+            --text-dark: #4a4a4a;
+            --card-white: rgba(255, 255, 255, 0.85);
+        }
+
+        body {
+            font-family: 'optima', 'Segoe UI', serif;
+            background: var(--bg-gradient);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--text-dark);
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #7d6b60;
+            letter-spacing: 3px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        /* Contenedor principal */
+        .carousel-wrapper {
+            position: relative;
+            width: 85%;
+            max-width: 450px;
+            perspective: 1000px;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            background: var(--card-white);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* Estilo de las tarjetas individuales */
+        .card {
+            min-width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .card p {
+            font-size: 1.6rem;
+            line-height: 1.5;
+            color: #5d5d5d;
+            font-style: italic;
+        }
+
+        /* Botones decorativos */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            font-size: 1.2rem;
+            color: var(--accent-pink);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-pink);
+            color: white;
+        }
+
+        .prev { left: -20px; }
+        .next { right: -20px; }
+
+        /* Indicadores */
+        .dots {
+            margin-top: 25px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #d1d1d1;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--accent-pink);
+            width: 25px;
+            border-radius: 10px;
+        }
+
+        /* Decoración extra: Destellos */
+        .sparkle {
+            position: absolute;
+            color: var(--accent-pink);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Un Poco de Ti. ✨</h1>
+
+    <div class="carousel-wrapper">
+        <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+        
+        <div class="carousel-container">
+            <div class="carousel-track" id="track">
+                <div class="card"><p>El pelo negro te queda divino</p></div>
+                <div class="card"><p>No elegirás más las películas 🍿</p></div>
+                <div class="card"><p>Me gusta tu lunar y tu teta izquierda</p></div>
+                <div class="card"><p>Me encantan tus caricias</p></div>
+                <div class="card"><p>Tenés una mirada de soñadora</p></div>
+                <div class="card"><p>Lástima que sos de escorpio ♏</p></div>
+                <div class="card"><p>Dale, soltá a tu ex 🫣</p></div>
+                <div class="card"><p>Te quedó rica la comida jaja 🍳</p></div>
+            </div>
+        </div>
+
+        <button class="nav-btn next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <div class="dots" id="dots-container"></div>
+
+    <script>
+        const track = document.getElementById('track');
+        const slides = Array.from(track.children);
+        const dotsContainer = document.getElementById('dots-container');
+        let currentIndex = 0;
+
+        // Crear puntos
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = Array.from(dotsContainer.children);
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        function moveSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex >= slides.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = slides.length - 1;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        // Swipe básico para móviles
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        document.addEventListener('touchstart', e => touchstartX = e.changedTouches[0].screenX);
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            if (touchstartX - touchendX > 50) moveSlide(1);
+            if (touchendX - touchstartX > 50) moveSlide(-1);
+        });
+    </script>
+</body>
+</html>
