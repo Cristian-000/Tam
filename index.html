@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esencia | Para Vos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS: Estética 'Quiet Luxury' / Editorial */
+        /* CSS: Estética 'Moderno y Sofisticado' con Contraste */
         :root {
-            --bg-color: #f4f2ef; /* Tono papel antiguo suave */
-            --card-bg: rgba(255, 255, 255, 0.65);
-            --text-main: #2c2c2c; /* Gris carbón en lugar de negro puro */
-            --text-sub: #6e6e6e;
-            --accent: #8e8071; /* Tono tierra/taupe */
-            --border: rgba(255, 255, 255, 0.4);
-            --shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+            /* Paleta de colores renovada */
+            --bg-color: #f0ece6; /* Crema cálido */
+            --accent-color: #3a5a61; /* Azul petróleo profundo para romper la monotonía */
+            --card-bg: #ffffff;
+            --text-main: #222222;
+            --text-sub: #666666;
+            
+            /* Sombra más profunda y coloreada para dar volumen real */
+            --shadow-elevation: 0 35px 60px -15px rgba(58, 90, 97, 0.3);
         }
 
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
-            /* Ruido sutil para textura de papel */
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            /* Un fondo sutil con un degradado orgánico para dar profundidad */
+            background-image: radial-gradient(circle at 10% 20%, rgba(58, 90, 97, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 90% 80%, rgba(165, 142, 122, 0.15) 0%, transparent 50%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -33,62 +36,54 @@
             overflow: hidden;
         }
 
-        /* Título refinado */
         header {
-            margin-bottom: 40px;
+            margin-bottom: 45px;
             text-align: center;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-out forwards;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            letter-spacing: 0.15em;
-            color: var(--text-main);
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: var(--accent-color);
             margin: 0;
-            text-transform: uppercase;
         }
 
         .subtitle {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 600;
             letter-spacing: 0.3em;
-            color: var(--accent);
+            color: var(--text-sub);
             text-transform: uppercase;
-            margin-top: 10px;
+            margin-bottom: 15px;
             display: block;
         }
 
         /* Contenedor principal */
         .carousel-wrapper {
             position: relative;
-            width: 90%;
-            max-width: 500px;
-            /* Eliminamos la perspectiva exagerada para un look más plano y moderno */
+            width: 88%;
+            max-width: 480px;
         }
 
         .carousel-container {
             position: relative;
             overflow: hidden;
-            border-radius: 2px; /* Bordes menos redondeados para madurez */
+            border-radius: 4px;
             background: var(--card-bg);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            aspect-ratio: 4/3; /* Proporción fotográfica */
-            opacity: 0;
-            animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+            /* Sombra fuerte que hace que la tarjeta "flote" */
+            box-shadow: var(--shadow-elevation);
+            /* Aspect ratio cuadrado-fotográfico */
+            aspect-ratio: 1 / 1;
         }
 
         .carousel-track {
             display: flex;
             height: 100%;
-            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Estilo de las tarjetas */
+        /* Estilo de las tarjetas - Lectura mejorada */
         .card {
             min-width: 100%;
             height: 100%;
@@ -96,151 +91,156 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            padding: 35px;
             box-sizing: border-box;
             text-align: center;
+            /* Borde superior de acento */
+            border-top: 4px solid var(--accent-color);
         }
 
         .card-number {
-            font-size: 0.7rem;
-            color: var(--accent);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            opacity: 0.7;
+            margin-bottom: 25px;
             letter-spacing: 2px;
-            margin-bottom: 20px;
-            font-family: 'Lato', sans-serif;
         }
 
         .card p {
+            /* CAMBIO CLAVE: Fuente normal, no itálica, y más gruesa */
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem; /* Letra un poco más pequeña para elegancia */
-            line-height: 1.6;
+            font-style: normal; 
+            font-weight: 500;
+            font-size: 1.6rem;
+            line-height: 1.4;
             color: var(--text-main);
-            font-style: italic;
-            max-width: 90%;
+            max-width: 95%;
             margin: 0;
         }
 
-        /* Navegación Minimalista */
+        /* Estilo para los comentarios entre paréntesis */
+        .sub-note {
+            display: block;
+            margin-top: 12px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic; /* Solo esto queda inclinado */
+            font-size: 1rem;
+            color: var(--text-sub);
+            font-weight: 400;
+        }
+
+        /* Navegación */
         .nav-area {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            margin-top: 30px;
-            padding: 0 10px;
-            box-sizing: border-box;
+            margin-top: 35px;
         }
 
         .nav-btn {
             background: transparent;
-            border: none;
+            border: 2px solid rgba(58, 90, 97, 0.2);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
             cursor: pointer;
-            color: var(--accent);
-            font-size: 1.5rem;
-            transition: transform 0.3s ease, color 0.3s ease;
-            padding: 10px;
-            opacity: 0.7;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .nav-btn:hover {
-            color: var(--text-main);
-            transform: scale(1.1);
-            opacity: 1;
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(58, 90, 97, 0.3);
         }
 
-        /* Indicadores de línea en lugar de puntos */
-        .progress-bar {
-            flex-grow: 1;
-            height: 1px;
-            background: #dcdcdc;
-            margin: 0 20px;
-            position: relative;
-            overflow: hidden;
+        /* Indicador de paginación simple */
+        .pagination {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-sub);
+            letter-spacing: 2px;
         }
+        #current-slide { color: var(--accent-color); }
 
-        .progress-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            background: var(--text-main);
-            width: 0%; /* Se actualizará con JS */
-            transition: width 0.6s ease;
-        }
-
-        /* Animaciones de entrada */
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Ajuste para móviles */
         @media (max-width: 600px) {
-            h1 { font-size: 1.5rem; }
-            .card p { font-size: 1.3rem; }
-            .carousel-container { aspect-ratio: 1/1; }
+            h1 { font-size: 1.8rem; }
+            .card p { font-size: 1.4rem; }
+            .carousel-wrapper { width: 92%; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <span class="subtitle">10 COSAS SOBRE VOS</span>
-        <h1>Pequeños Detalles</h1>
+        <span class="subtitle">Decálogo Personal</span>
+        <h1>Pequeños Detalles.</h1>
     </header>
 
     <div class="carousel-wrapper">
         <div class="carousel-container">
             <div class="carousel-track" id="track">
                 <div class="card">
-                    <span class="card-number">I</span>
+                    <span class="card-number">01</span>
                     <p>Decimotercer Gatisola en su noble linaje.</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">II</span>
-                    <p>No le gusta dar órdenes...<br><span style="font-size:0.8em; opacity:0.6">(o eso dice).</span></p>
+                    <span class="card-number">02</span>
+                    <p>No le gusta dar órdenes... <span class="sub-note">(o eso dice...)</span></p>
                 </div>
                 <div class="card">
-                    <span class="card-number">III</span>
-                    <p>Adora los animales,<br>en especial a su gata.</p>
+                    <span class="card-number">03</span>
+                    <p>Adora los animales, en especial a su gata.</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">IV</span>
-                    <p>Tenés más libros de autoayuda que libros... libros.</p>
+                    <span class="card-number">04</span>
+                    <p>Su sonrisa es sincera, especial. </p>
                 </div>
                 <div class="card">
-                    <span class="card-number">V</span>
-                    <p>Tenés un pasado muy turbio.<br><span style="font-size:0.8em; color:#a8a8a8">Vega#%&...</span></p>
+                    <span class="card-number">05</span>
+                    <p>Tiene más libros de autoayuda que LibrosLibros.</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">VI</span>
-                    <p>No aceptás ni un café,<br>rata de alcantarilla.</p>
+                    <span class="card-number">06</span>
+                    <p>Tiene un pasado muy turbio. <span class="sub-note">Vega#%&...</span></p>
                 </div>
                 <div class="card">
-                    <span class="card-number">VII</span>
-                    <p>Bendita su vocación por enseñar,<br>¿pero qué exactamente?</p>
+                    <span class="card-number">07</span>
+                    <p>No acepta ni un café, rata de alcantarilla.</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">VIII</span>
+                    <span class="card-number">08</span>
+                    <p>Bendita su vocación por enseñar. <span class="sub-note">¿Pero qué exactamente?</span></p>
+                </div>
+                <div class="card">
+                    <span class="card-number">09</span>
                     <p>Fa, y esas...</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">IX</span>
-                    <p>Esas pecas,<br>dios mío.</p>
+                    <span class="card-number">10</span>
+                    <p>Esas pecas, dios mío.</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">X</span>
-                    <p style="font-size: 3rem;">😜</p>
+                    <span class="card-number">☆</span>
+                    <p style="font-size: 3.5rem;">😌</p>
                 </div>
             </div>
         </div>
 
         <div class="nav-area">
             <button class="nav-btn prev" onclick="moveSlide(-1)">&#8592;</button>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress"></div>
+            <div class="pagination">
+                <span id="current-slide">1</span> / <span id="total-slides"></span>
             </div>
             <button class="nav-btn next" onclick="moveSlide(1)">&#8594;</button>
         </div>
@@ -249,21 +249,16 @@
     <script>
         const track = document.getElementById('track');
         const slides = Array.from(track.children);
-        const progressFill = document.getElementById('progress');
+        const currentSlideEl = document.getElementById('current-slide');
+        const totalSlidesEl = document.getElementById('total-slides');
         let currentIndex = 0;
 
-        // Inicializar barra de progreso
-        updateProgress();
+        totalSlidesEl.textContent = slides.length;
+        updateCarousel();
 
         function updateCarousel() {
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            updateProgress();
-        }
-
-        function updateProgress() {
-            // Calculamos el porcentaje basado en el slide actual
-            const percentage = ((currentIndex + 1) / slides.length) * 100;
-            progressFill.style.width = `${percentage}%`;
+            currentSlideEl.textContent = currentIndex + 1;
         }
 
         function moveSlide(direction) {
@@ -273,10 +268,9 @@
             updateCarousel();
         }
 
-        // Swipe para móviles (Táctil)
+        // Swipe para móviles
         let touchstartX = 0;
         let touchendX = 0;
-        
         const container = document.querySelector('.carousel-container');
 
         container.addEventListener('touchstart', e => {
@@ -285,15 +279,10 @@
 
         container.addEventListener('touchend', e => {
             touchendX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, {passive: true});
-
-        function handleSwipe() {
             if (touchstartX - touchendX > 50) moveSlide(1);
             if (touchendX - touchstartX > 50) moveSlide(-1);
-        }
+        }, {passive: true});
 
-        // Navegación con teclado
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') moveSlide(1);
             if (e.key === 'ArrowLeft') moveSlide(-1);
