@@ -3,87 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esencia | Para Vos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+    <title>Para Vos | Esencia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS: Estética 'Moderno y Sofisticado' con Contraste */
         :root {
-            /* Paleta de colores renovada */
-            --bg-color: #f0ece6; /* Crema cálido */
-            --accent-color: #3a5a61; /* Azul petróleo profundo para romper la monotonía */
-            --card-bg: #ffffff;
-            --text-main: #222222;
-            --text-sub: #666666;
-            
-            /* Sombra más profunda y coloreada para dar volumen real */
-            --shadow-elevation: 0 35px 60px -15px rgba(58, 90, 97, 0.3);
+            --bg-main: #fcfaf7;
+            --accent-warm: #d4a373; /* Terracota suave */
+            --accent-cool: #8b9a47; /* Verde salvia */
+            --text-dark: #2f2f2f;
+            --text-light: #7a7a7a;
+            --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            /* Un fondo sutil con un degradado orgánico para dar profundidad */
-            background-image: radial-gradient(circle at 10% 20%, rgba(58, 90, 97, 0.1) 0%, transparent 50%),
-                              radial-gradient(circle at 90% 80%, rgba(165, 142, 122, 0.15) 0%, transparent 50%);
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-main);
+            /* Fondo con más vida y movimiento */
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(212, 163, 115, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 154, 71, 0.1) 0px, transparent 50%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            color: var(--text-main);
+            color: var(--text-dark);
             overflow: hidden;
         }
 
         header {
-            margin-bottom: 45px;
             text-align: center;
+            margin-bottom: 40px;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 500;
-            color: var(--accent-color);
+            font-size: 2.5rem;
             margin: 0;
+            background: linear-gradient(90deg, #5e503f, #a98467);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .subtitle {
+        .tagline {
             font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.3em;
-            color: var(--text-sub);
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 15px;
-            display: block;
+            color: var(--accent-cool);
+            font-weight: 500;
         }
 
-        /* Contenedor principal */
+        /* Contenedor del Carrusel */
         .carousel-wrapper {
             position: relative;
-            width: 88%;
-            max-width: 480px;
+            width: 90%;
+            max-width: 450px;
         }
 
         .carousel-container {
             position: relative;
             overflow: hidden;
-            border-radius: 4px;
-            background: var(--card-bg);
-            /* Sombra fuerte que hace que la tarjeta "flote" */
-            box-shadow: var(--shadow-elevation);
-            /* Aspect ratio cuadrado-fotográfico */
-            aspect-ratio: 1 / 1;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: var(--card-shadow);
+            aspect-ratio: 1 / 1.1; /* Un poco más alto que ancho */
+            border: 1px solid rgba(0,0,0,0.03);
         }
 
         .carousel-track {
             display: flex;
             height: 100%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        /* Estilo de las tarjetas - Lectura mejorada */
+        /* Tarjetas */
         .card {
             min-width: 100%;
             height: 100%;
@@ -91,64 +86,63 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 35px;
+            padding: 45px;
             box-sizing: border-box;
             text-align: center;
-            /* Borde superior de acento */
-            border-top: 4px solid var(--accent-color);
+            position: relative;
         }
 
-        .card-number {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            opacity: 0.7;
-            margin-bottom: 25px;
-            letter-spacing: 2px;
+        /* Decoración lateral de la tarjeta */
+        .card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20%;
+            height: 60%;
+            width: 5px;
+            background: var(--accent-warm);
+            border-radius: 0 10px 10px 0;
         }
 
         .card p {
-            /* CAMBIO CLAVE: Fuente normal, no itálica, y más gruesa */
             font-family: 'Playfair Display', serif;
-            font-style: normal; 
-            font-weight: 500;
-            font-size: 1.6rem;
-            line-height: 1.4;
-            color: var(--text-main);
-            max-width: 95%;
+            font-size: 1.7rem;
+            font-weight: 600;
+            line-height: 1.35;
+            color: var(--text-dark);
             margin: 0;
         }
 
-        /* Estilo para los comentarios entre paréntesis */
         .sub-note {
             display: block;
-            margin-top: 12px;
+            margin-top: 15px;
             font-family: 'Playfair Display', serif;
-            font-style: italic; /* Solo esto queda inclinado */
-            font-size: 1rem;
-            color: var(--text-sub);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--accent-warm);
             font-weight: 400;
         }
 
-        /* Navegación */
+        /* Navegación y Barra Inferior */
         .nav-area {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            margin-top: 35px;
+            margin-top: 30px;
+            padding: 0 10px;
         }
 
         .nav-btn {
-            background: transparent;
-            border: 2px solid rgba(58, 90, 97, 0.2);
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
+            background: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
             cursor: pointer;
-            color: var(--accent-color);
+            color: var(--text-dark);
             font-size: 1.2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
@@ -156,109 +150,101 @@
         }
 
         .nav-btn:hover {
-            background: var(--accent-color);
+            background: var(--text-dark);
             color: white;
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(58, 90, 97, 0.3);
+            transform: translateY(-3px);
         }
 
-        /* Indicador de paginación simple */
-        .pagination {
-            font-family: 'Montserrat', sans-serif;
+        .counter {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
             font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-sub);
-            letter-spacing: 2px;
+            color: var(--text-light);
+            background: rgba(255,255,255,0.5);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
         }
-        #current-slide { color: var(--accent-color); }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
+        #active-num {
+            color: var(--accent-warm);
+            font-weight: 600;
+        }
+
+        @media (max-width: 500px) {
+            h1 { font-size: 2rem; }
             .card p { font-size: 1.4rem; }
-            .carousel-wrapper { width: 92%; }
+            .carousel-container { aspect-ratio: 1 / 1.2; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <span class="subtitle">Descubriendote</span>
-        <h1>Pequeños Detalles.</h1>
+        <span class="tagline">Retrato en palabras</span>
+        <h1>Para Vos.</h1>
     </header>
 
     <div class="carousel-wrapper">
         <div class="carousel-container">
             <div class="carousel-track" id="track">
                 <div class="card">
-                    <span class="card-number">01</span>
                     <p>Decimotercer Gatisola en su noble linaje.</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">02</span>
                     <p>No le gusta dar órdenes... <span class="sub-note">(o eso dice...)</span></p>
                 </div>
                 <div class="card">
-                    <span class="card-number">03</span>
                     <p>Adora los animales, en especial a su gata.</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">04</span>
-                    <p>Su sonrisa es sincera, especial. </p>
+                    <p>Su sonrisa es sincera, especial.</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">05</span>
                     <p>Tiene más libros de autoayuda que LibrosLibros.</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">06</span>
                     <p>Tiene un pasado muy turbio. <span class="sub-note">Vega#%&...</span></p>
                 </div>
                 <div class="card">
-                    <span class="card-number">07</span>
                     <p>No acepta ni un café, rata de alcantarilla.</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">08</span>
                     <p>Bendita su vocación por enseñar. <span class="sub-note">¿Pero qué exactamente?</span></p>
                 </div>
                 <div class="card">
-                    <span class="card-number">09</span>
                     <p>Fa, y esas...</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">10</span>
                     <p>Esas pecas, dios mío.</p>
                 </div>
                 <div class="card">
-                    <span class="card-number">☆</span>
-                    <p style="font-size: 3.5rem;">😌</p>
+                    <p style="font-size: 4rem;">😌</p>
                 </div>
             </div>
         </div>
 
         <div class="nav-area">
-            <button class="nav-btn prev" onclick="moveSlide(-1)">&#8592;</button>
-            <div class="pagination">
-                <span id="current-slide">1</span> / <span id="total-slides"></span>
+            <button class="nav-btn" onclick="moveSlide(-1)">&#8592;</button>
+            <div class="counter">
+                <span id="active-num">1</span> / <span id="total-num"></span>
             </div>
-            <button class="nav-btn next" onclick="moveSlide(1)">&#8594;</button>
+            <button class="nav-btn" onclick="moveSlide(1)">&#8594;</button>
         </div>
     </div>
 
     <script>
         const track = document.getElementById('track');
         const slides = Array.from(track.children);
-        const currentSlideEl = document.getElementById('current-slide');
-        const totalSlidesEl = document.getElementById('total-slides');
+        const activeNum = document.getElementById('active-num');
+        const totalNum = document.getElementById('total-num');
         let currentIndex = 0;
 
-        totalSlidesEl.textContent = slides.length;
-        updateCarousel();
+        totalNum.textContent = slides.length;
 
         function updateCarousel() {
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            currentSlideEl.textContent = currentIndex + 1;
+            activeNum.textContent = currentIndex + 1;
         }
 
         function moveSlide(direction) {
@@ -268,22 +254,19 @@
             updateCarousel();
         }
 
-        // Swipe para móviles
-        let touchstartX = 0;
-        let touchendX = 0;
+        // Soporte Táctil
+        let startX = 0;
         const container = document.querySelector('.carousel-container');
 
-        container.addEventListener('touchstart', e => {
-            touchstartX = e.changedTouches[0].screenX;
-        }, {passive: true});
-
+        container.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive: true});
         container.addEventListener('touchend', e => {
-            touchendX = e.changedTouches[0].screenX;
-            if (touchstartX - touchendX > 50) moveSlide(1);
-            if (touchendX - touchstartX > 50) moveSlide(-1);
+            const endX = e.changedTouches[0].clientX;
+            if (startX - endX > 50) moveSlide(1);
+            if (endX - startX > 50) moveSlide(-1);
         }, {passive: true});
 
-        document.addEventListener('keydown', (e) => {
+        // Teclado
+        document.addEventListener('keydown', e => {
             if (e.key === 'ArrowRight') moveSlide(1);
             if (e.key === 'ArrowLeft') moveSlide(-1);
         });
