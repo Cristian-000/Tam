@@ -9,7 +9,7 @@
     <style>
         :root {
             --bg-main: #f5f3f0; 
-            --accent-spicy: #a64d33; /* Un terracota más rojizo, más intenso */
+            --accent-spicy: #a64d33; 
             --text-dark: #1a1a1a;
             --text-soft: #555555;
             --card-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.12);
@@ -33,12 +33,12 @@
 
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             font-weight: 600;
             margin: 0;
             color: var(--text-dark);
@@ -63,17 +63,17 @@
         .carousel-container {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 12px;
             background: #ffffff;
             box-shadow: var(--card-shadow);
-            aspect-ratio: 1 / 1.1;
-            border: 1px solid rgba(0,0,0,0.01);
+            aspect-ratio: 1 / 1.15;
+            border: 1px solid rgba(0,0,0,0.03);
         }
 
         .carousel-track {
             display: flex;
             height: 100%;
-            transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .card {
@@ -83,28 +83,34 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 50px;
+            padding: 45px;
             box-sizing: border-box;
             text-align: center;
+            opacity: 0.3; /* Efecto fade para las cartas no activas */
+            transition: opacity 0.6s ease;
+        }
+
+        .card.active {
+            opacity: 1;
         }
 
         .card p {
             font-family: 'Lora', serif;
-            font-size: 1.6rem;
+            font-size: 1.45rem;
             font-weight: 400;
-            line-height: 1.45;
+            line-height: 1.6;
             color: var(--text-dark);
             margin: 0;
         }
 
         .sub-note {
             display: block;
-            margin-top: 20px;
+            margin-top: 18px;
             font-family: 'Lora', serif;
             font-style: italic;
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--accent-spicy);
-            opacity: 0.9;
+            opacity: 0.85;
         }
 
         .nav-area {
@@ -112,14 +118,14 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            margin-top: 40px;
+            margin-top: 35px;
         }
 
         .nav-btn {
             background: transparent;
-            border: 1px solid rgba(0,0,0,0.1);
-            width: 44px;
-            height: 44px;
+            border: 1px solid rgba(0,0,0,0.08);
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             cursor: pointer;
             color: var(--text-dark);
@@ -127,6 +133,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.2rem;
         }
 
         .nav-btn:hover {
@@ -138,8 +145,8 @@
         .counter {
             font-family: 'Outfit', sans-serif;
             font-weight: 400;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
             color: var(--text-soft);
             text-transform: uppercase;
         }
@@ -147,69 +154,49 @@
         #active-num { color: var(--accent-spicy); font-weight: 600; }
 
         @media (max-width: 500px) {
-            h1 { font-size: 1.9rem; }
-            .card p { font-size: 1.35rem; }
+            h1 { font-size: 1.8rem; }
+            .card p { font-size: 1.25rem; }
+            .carousel-container { aspect-ratio: 1 / 1.3; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <span class="tagline">Descubriéndote</span>
+        <span class="tagline">Bitácora de una esencia</span>
         <h1>Un poco de vos.</h1>
     </header>
 
     <div class="carousel-wrapper">
         <div class="carousel-container">
             <div class="carousel-track" id="track">
-                <div class="card">
-                    <p>Decimotercer Gatisola en su noble linaje.</p>
-                </div>
-                <div class="card">
-                    <p>No le gusta dar órdenes... <span class="sub-note">eso dice...</span></p>
-                </div>
-                <div class="card">
-                    <p>Adora los animales,<br>en especial a su gata.</p>
-                </div>
-                <div class="card">
-                    <p>Su sonrisa es sincera,<br>especial.</p>
-                </div>
-                <div class="card">
-                    <p>Tiene más libros de autoayuda que LibrosLibros.</p>
-                </div>
-                <div class="card">
-                    <p>Casi no ve, como mi abuela<span class="sub-note">NO VES</span></p>
-                </div>
-                <div class="card">
-                    <p>Tiene un pasado muy turbio. <span class="sub-note">Esa etapa Vega#%&</span></p>
-                </div>
-                <div class="card">
-                    <p>No acepta ni un café,<br>rata de alcantarilla.</p>
-                </div>
-                <div class="card">
-                    <p>Bendita su vocación por enseñar. <span class="sub-note">Aunque a veces solo enseña a tener paciencia.</span></p>
-                </div>
-                <div class="card">
-                    <p>Fa, y esas...</p>
-                </div>
-                <div class="card">
-                    <p>Esas pecas, en persona son más bellas <br>por Dios.</p>
-                </div>
-                <div class="card">
-                    <p>Temerosa como una rosa en un temporal</p>
-                </div>
-                <div class="card">
-                    <p>Un caracol come más rápido que ella</p>
-                </div>
-                <div class="card">
-                    <p>Es un minion al que estiraron desde los pies a la cabeza</p>
-                </div>
-                <div class="card">
-                    <p>Es transparente? yo si la pude ver, no tanto como quisiera</p>
-                </div>
-                <div class="card">
-                    <p>"Mira pero no toques" no confía ni en su sombra</p>
-                </div>
+                <div class="card active"><p>Decimotercera Gatisola en su noble y complejo linaje.</p></div>
+                
+                <div class="card"><p>Asegura no disfrutar del mando... <span class="sub-note">aunque su mirada dicta lo contrario.</span></p></div>
+                
+                <div class="card"><p>Un corazón que late al unísono con el mundo animal.</p></div>
+                
+                <div class="card"><p>Posee más guías de introspección que una biblioteca nacional.</p></div>
+                
+                <div class="card"><p>Su visión es un desafío constante... <span class="sub-note">donde confunde horizontes con espejismos.</span></p></div>
+                
+                <div class="card"><p>Oculta un pasado enigmático. <span class="sub-note">Aquella cuestionable era de solo vegetales.</span></p></div>
+                
+                <div class="card"><p>Invitarla a un café es una misión diplomática fallida. <span class="sub-note">Económicamente austera, por no decir otra cosa.</span></p></div>
+                
+                <div class="card"><p>Bendita su vocación por enseñar. <span class="sub-note">Aunque a veces solo enseña a tener paciencia.</span></p></div>
+                
+                <div class="card"><p>Esas pecas... <br> en persona desafían cualquier descripción.</p></div>
+                
+                <div class="card"><p>Temerosa como una rosa ante la sospecha de un temporal.</p></div>
+                
+                <div class="card"><p>Degusta el tiempo con una lentitud de otro siglo. <span class="sub-note">Incluso un caracol le pediría paso.</span></p></div>
+                
+                <div class="card"><p>La estructura de un Minion, <br> pero con un diseño alargado y elegante.</p></div>
+                
+                <div class="card"><p>¿Transparente? <br> Logré verla, aunque nunca tanto como desearía.</p></div>
+                
+                <div class="card"><p>Firme defensora del "mirar sin tocar". <span class="sub-note">No confía ni en su propia sombra.</span></p></div>
             </div>
         </div>
 
@@ -234,6 +221,15 @@
         function updateCarousel() {
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
             activeNum.textContent = currentIndex + 1;
+            
+            // Manejo de clase activa para el fade-in
+            slides.forEach((slide, index) => {
+                if(index === currentIndex) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
         }
 
         function moveSlide(direction) {
@@ -243,14 +239,16 @@
             updateCarousel();
         }
 
-        // Táctil
+        // Táctil optimizado
         let startX = 0;
         const container = document.querySelector('.carousel-container');
         container.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive: true});
         container.addEventListener('touchend', e => {
             const endX = e.changedTouches[0].clientX;
-            if (startX - endX > 50) moveSlide(1);
-            if (endX - startX > 50) moveSlide(-1);
+            const distance = startX - endX;
+            if (Math.abs(distance) > 50) {
+                moveSlide(distance > 0 ? 1 : -1);
+            }
         }, {passive: true});
 
         document.addEventListener('keydown', e => {
