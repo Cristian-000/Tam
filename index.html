@@ -1,266 +1,399 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Vos | Esencia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-main: #f5f3f0; 
-            --accent-spicy: #a64d33; 
-            --text-dark: #1a1a1a;
-            --text-soft: #555555;
-            --card-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.12);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-main);
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(166, 77, 51, 0.05) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(26, 26, 26, 0.03) 0px, transparent 50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            color: var(--text-dark);
-            overflow: hidden;
-        }
+<title>Un poco de vos</title>
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Outfit:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 600;
-            margin: 0;
-            color: var(--text-dark);
-        }
+<style>
 
-        .tagline {
-            font-size: 0.7rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: var(--accent-spicy);
-            font-weight: 600;
-            display: block;
-            margin-bottom: 12px;
-        }
+:root{
+--bg-main:#f5f3f0;
+--accent:#a64d33;
+--text:#1a1a1a;
+--soft:#666;
+--card-bg:#ffffff;
+--shadow:0 30px 60px -20px rgba(0,0,0,0.15);
+}
 
-        .carousel-wrapper {
-            position: relative;
-            width: 85%;
-            max-width: 420px;
-        }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            background: #ffffff;
-            box-shadow: var(--card-shadow);
-            aspect-ratio: 1 / 1.15;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
+body{
 
-        .carousel-track {
-            display: flex;
-            height: 100%;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
+font-family:'Outfit',sans-serif;
+background:var(--bg-main);
 
-        .card {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 45px;
-            box-sizing: border-box;
-            text-align: center;
-            opacity: 0.3; /* Efecto fade para las cartas no activas */
-            transition: opacity 0.6s ease;
-        }
+background-image:
+radial-gradient(at 0% 0%, rgba(166,77,51,0.05), transparent 60%),
+radial-gradient(at 100% 100%, rgba(0,0,0,0.04), transparent 60%);
 
-        .card.active {
-            opacity: 1;
-        }
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 
-        .card p {
-            font-family: 'Lora', serif;
-            font-size: 1.45rem;
-            font-weight: 400;
-            line-height: 1.6;
-            color: var(--text-dark);
-            margin: 0;
-        }
+min-height:100vh;
 
-        .sub-note {
-            display: block;
-            margin-top: 18px;
-            font-family: 'Lora', serif;
-            font-style: italic;
-            font-size: 1rem;
-            color: var(--accent-spicy);
-            opacity: 0.85;
-        }
+padding:20px;
+color:var(--text);
+overflow:hidden;
+}
 
-        .nav-area {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            margin-top: 35px;
-        }
+/* header */
 
-        .nav-btn {
-            background: transparent;
-            border: 1px solid rgba(0,0,0,0.08);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            cursor: pointer;
-            color: var(--text-dark);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
+header{
+text-align:center;
+margin-bottom:28px;
+}
 
-        .nav-btn:hover {
-            background: var(--text-dark);
-            color: white;
-            border-color: var(--text-dark);
-        }
+.tagline{
+letter-spacing:6px;
+font-size:.65rem;
+text-transform:uppercase;
+color:var(--accent);
+margin-bottom:10px;
+display:block;
+font-weight:600;
+}
 
-        .counter {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 400;
-            font-size: 0.75rem;
-            letter-spacing: 4px;
-            color: var(--text-soft);
-            text-transform: uppercase;
-        }
+h1{
+font-family:'Playfair Display',serif;
+font-size:1.9rem;
+}
 
-        #active-num { color: var(--accent-spicy); font-weight: 600; }
+/* carousel */
 
-        @media (max-width: 500px) {
-            h1 { font-size: 1.8rem; }
-            .card p { font-size: 1.25rem; }
-            .carousel-container { aspect-ratio: 1 / 1.3; }
-        }
-    </style>
+.carousel-wrapper{
+width:100%;
+max-width:420px;
+}
+
+.carousel{
+overflow:hidden;
+border-radius:14px;
+background:var(--card-bg);
+box-shadow:var(--shadow);
+aspect-ratio:1/1.2;
+position:relative;
+}
+
+.track{
+display:flex;
+height:100%;
+transition:transform .8s cubic-bezier(.25,1,.5,1);
+}
+
+/* card */
+
+.card{
+
+min-width:100%;
+padding:38px 32px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+opacity:.35;
+transition:opacity .5s ease;
+}
+
+.card.active{
+opacity:1;
+}
+
+.card p{
+font-family:'Lora',serif;
+font-size:1.3rem;
+line-height:1.6;
+}
+
+.sub{
+display:block;
+margin-top:14px;
+font-style:italic;
+font-size:.95rem;
+color:var(--accent);
+}
+
+/* navigation */
+
+.nav{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-top:22px;
+}
+
+button{
+background:transparent;
+border:1px solid rgba(0,0,0,.1);
+width:46px;
+height:46px;
+border-radius:50%;
+font-size:1.2rem;
+cursor:pointer;
+transition:.25s;
+}
+
+button:hover{
+background:var(--text);
+color:white;
+border-color:var(--text);
+}
+
+.counter{
+font-size:.75rem;
+letter-spacing:4px;
+color:var(--soft);
+}
+
+#active{
+color:var(--accent);
+font-weight:600;
+}
+
+/* dots */
+
+.dots{
+display:flex;
+justify-content:center;
+gap:8px;
+margin-top:18px;
+}
+
+.dot{
+
+width:8px;
+height:8px;
+border-radius:50%;
+background:#ccc;
+transition:.3s;
+}
+
+.dot.active{
+background:var(--accent);
+transform:scale(1.2);
+}
+
+/* desktop small enhancement */
+
+@media(min-width:600px){
+
+h1{
+font-size:2.2rem;
+}
+
+.card p{
+font-size:1.45rem;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-    <header>
-        <span class="tagline">Bitácora de una esencia</span>
-        <h1>Un poco de vos.</h1>
-    </header>
+<header>
+<span class="tagline">Bitácora de una esencia</span>
+<h1>Un poco de vos</h1>
+</header>
 
-    <div class="carousel-wrapper">
-        <div class="carousel-container">
-            <div class="carousel-track" id="track">
-                <div class="card active"><p>Decimotercera Gatisola en su noble y complejo linaje.</p></div>
-                
-                <div class="card"><p>Asegura no disfrutar del mando... <span class="sub-note">aunque su mirada dicta lo contrario.</span></p></div>
-                
-                <div class="card"><p>Un corazón que late al unísono con el mundo animal, mahulla..</p></div>
-                
-                <div class="card"><p>Posee más guías de introspección que una biblioteca nacional.</p></div>
-                
-                <div class="card"><p>Su visión es un desafío constante... <span class="sub-note">donde confunde horizontes con espejismos.</span></p></div>
-                
-                <div class="card"><p>Oculta un pasado enigmático. <span class="sub-note">Aquella cuestionable era de solo vegetales.</span></p></div>
-                
-                <div class="card"><p>Invitarla a un café es una misión diplomática fallida. <span class="sub-note">Prácticamente imposible, por no decir otra cosa.</span></p></div>
-                
-                <div class="card"><p>Bendita su vocación por enseñar. <span class="sub-note">Aunque a veces solo enseña a tener paciencia.</span></p></div>
-                
-                <div class="card"><p>Esas pecas... <br> en persona desafían cualquier descripción.</p></div>
-                
-                <div class="card"><p>Temerosa como una rosa ante la sospecha de un temporal.</p></div>
-                
-                <div class="card"><p>Degusta la comida con una lentitud de otro siglo. <span class="sub-note">Incluso un caracol lo hace más rápido.</span></p></div>
-                
-                <div class="card"><p>La estructura de un Minion, <br> pero con un diseño alargado y refinado.</p></div>
-                
-                <div class="card"><p>¿Transparente? <br> Logré verla, aunque nunca tanto como desearía.</p></div>
-                
-                <div class="card"><p>Firme defensora del "mirar sin tocar". <span class="sub-note">No confía ni en su propia sombra.</span></p></div>
-          
-                <div class="card"><p>Le transpiran los pies <span class="sub-note">Incluso con sandalias.</span></p></div>
-                
-                <div class="card"><p>Antisocial y dormilona  <span class="sub-note">Está a la moda, es un Therian gatuno.</span></p></div>
-       
-            </div>
-        </div>
+<div class="carousel-wrapper">
 
-        <div class="nav-area">
-            <button class="nav-btn" onclick="moveSlide(-1)">&#8592;</button>
-            <div class="counter">
-                <span id="active-num">1</span> / <span id="total-num"></span>
-            </div>
-            <button class="nav-btn" onclick="moveSlide(1)">&#8594;</button>
-        </div>
-    </div>
+<div class="carousel">
 
-    <script>
-        const track = document.getElementById('track');
-        const slides = Array.from(track.children);
-        const activeNum = document.getElementById('active-num');
-        const totalNum = document.getElementById('total-num');
-        let currentIndex = 0;
+<div class="track" id="track">
 
-        totalNum.textContent = slides.length;
+<div class="card active"><p>Decimotercera Gatisola en su noble y complejo linaje.</p></div>
 
-        function updateCarousel() {
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            activeNum.textContent = currentIndex + 1;
-            
-            // Manejo de clase activa para el fade-in
-            slides.forEach((slide, index) => {
-                if(index === currentIndex) {
-                    slide.classList.add('active');
-                } else {
-                    slide.classList.remove('active');
-                }
-            });
-        }
+<div class="card"><p>Asegura no disfrutar del mando<span class="sub">aunque su mirada diga otra cosa.</span></p></div>
 
-        function moveSlide(direction) {
-            currentIndex += direction;
-            if (currentIndex >= slides.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = slides.length - 1;
-            updateCarousel();
-        }
+<div class="card"><p>Un corazón que late al unísono con el mundo animal.</p></div>
 
-        // Táctil optimizado
-        let startX = 0;
-        const container = document.querySelector('.carousel-container');
-        container.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive: true});
-        container.addEventListener('touchend', e => {
-            const endX = e.changedTouches[0].clientX;
-            const distance = startX - endX;
-            if (Math.abs(distance) > 50) {
-                moveSlide(distance > 0 ? 1 : -1);
-            }
-        }, {passive: true});
+<div class="card"><p>Posee más guías de introspección que una biblioteca nacional.</p></div>
 
-        document.addEventListener('keydown', e => {
-            if (e.key === 'ArrowRight') moveSlide(1);
-            if (e.key === 'ArrowLeft') moveSlide(-1);
-        });
-    </script>
+<div class="card"><p>Su visión es un desafío constante<span class="sub">donde confunde horizontes con espejismos.</span></p></div>
+
+<div class="card"><p>Aquella misteriosa era<span class="sub">donde solo comía vegetales.</span></p></div>
+
+<div class="card"><p>Invitarla a un café<span class="sub">misión diplomática casi imposible.</span></p></div>
+
+<div class="card"><p>Bendita su vocación por enseñar<span class="sub">aunque a veces solo enseña paciencia.</span></p></div>
+
+<div class="card"><p>Esas pecas<span class="sub">en persona desafían cualquier descripción.</span></p></div>
+
+<div class="card"><p>Temerosa como una rosa ante un posible temporal.</p></div>
+
+<div class="card"><p>Degusta la comida con una lentitud histórica<span class="sub">un caracol se desesperaría.</span></p></div>
+
+<div class="card"><p>La estructura de un minion<span class="sub">pero misteriosamente elegante.</span></p></div>
+
+<div class="card"><p>Logré verla<span class="sub">aunque nunca tanto como quisiera.</span></p></div>
+
+<div class="card"><p>Le transpiran los pies<span class="sub">incluso con sandalias.</span></p></div>
+
+<div class="card"><p>Antisocial y dormilona<span class="sub">claramente un therian gatuno.</span></p></div>
+
+<!-- nuevas -->
+
+<div class="card"><p>Muerde<span class="sub">y lo hace peligrosamente bien.</span></p></div>
+
+<div class="card"><p>Tiene la curiosa habilidad<span class="sub">de acariciar mis pelos exactamente donde me gusta.</span></p></div>
+
+<div class="card"><p>Pasa gran parte del día con sueño<span class="sub">pero cuando despierta ilumina todo.</span></p></div>
+
+<div class="card"><p>Sus lunares no son lunares<span class="sub">son una constelación que sigo explorando.</span></p></div>
+
+<div class="card"><p>Sin ropa<span class="sub">la palabra diosa se queda corta.</span></p></div>
+
+<div class="card"><p>Dormir con ella es curioso<span class="sub">abrazo un cubito de hielo... y aún así es mi lugar favorito.</span></p></div>
+
+<div class="card"><p>A veces me mira<span class="sub">como si ya supiera todo lo que estoy pensando.</span></p></div>
+
+<div class="card"><p>Cuando se acerca demasiado<span class="sub">el resto del mundo deja de importar.</span></p></div>
+
+<div class="card"><p>Quizás sea magia<span class="sub">o quizás simplemente ella.</span></p></div>
+
+</div>
+
+</div>
+
+<div class="nav">
+
+<button onclick="move(-1)">←</button>
+
+<div class="counter">
+<span id="active">1</span> /
+<span id="total"></span>
+</div>
+
+<button onclick="move(1)">→</button>
+
+</div>
+
+<div class="dots" id="dots"></div>
+
+</div>
+
+<script>
+
+const track=document.getElementById("track")
+const slides=[...track.children]
+
+const activeNum=document.getElementById("active")
+const totalNum=document.getElementById("total")
+
+const dotsContainer=document.getElementById("dots")
+
+let index=0
+let autoplay
+
+totalNum.textContent=slides.length
+
+slides.forEach((_,i)=>{
+let dot=document.createElement("div")
+dot.className="dot"
+if(i===0)dot.classList.add("active")
+dot.onclick=()=>go(i)
+dotsContainer.appendChild(dot)
+})
+
+const dots=[...dotsContainer.children]
+
+function update(){
+
+track.style.transform=`translateX(-${index*100}%)`
+
+slides.forEach((s,i)=>{
+s.classList.toggle("active",i===index)
+})
+
+dots.forEach((d,i)=>{
+d.classList.toggle("active",i===index)
+})
+
+activeNum.textContent=index+1
+}
+
+function move(dir){
+
+index+=dir
+
+if(index>=slides.length)index=0
+if(index<0)index=slides.length-1
+
+update()
+stopAuto()
+}
+
+function go(i){
+
+index=i
+update()
+stopAuto()
+}
+
+/* swipe */
+
+let startX=0
+
+const carousel=document.querySelector(".carousel")
+
+carousel.addEventListener("touchstart",e=>{
+startX=e.touches[0].clientX
+},{passive:true})
+
+carousel.addEventListener("touchend",e=>{
+
+let dist=startX-e.changedTouches[0].clientX
+
+if(Math.abs(dist)>50){
+
+move(dist>0?1:-1)
+
+}
+
+},{passive:true})
+
+/* keyboard */
+
+document.addEventListener("keydown",e=>{
+if(e.key==="ArrowRight")move(1)
+if(e.key==="ArrowLeft")move(-1)
+})
+
+/* autoplay */
+
+function startAuto(){
+
+autoplay=setInterval(()=>{
+move(1)
+},5000)
+
+}
+
+function stopAuto(){
+
+clearInterval(autoplay)
+
+}
+
+startAuto()
+
+</script>
+
 </body>
 </html>
-
